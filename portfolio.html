@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nitin Chauhan | DevOps & Backend Developer</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #0a66c2;
+            --secondary: #123456;
+            --dark: #333;
+            --light: #f5f5f5;
+            --gray: #777;
+            --accent: #e7f1fd;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--secondary);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+        }
+        
+        section h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--dark);
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background-color: var(--accent);
+            margin-top: 80px;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .hero-text {
+            flex: 1;
+            padding-right: 50px;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-text h1 span {
+            color: var(--primary);
+        }
+        
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--gray);
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 50%;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+            border: 8px solid white;
+        }
+        
+        .social-icons {
+            display: flex;
+            margin-top: 30px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            margin-right: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* About Section */
+        .about {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .about-text {
+            flex: 2;
+            padding-right: 50px;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .skill-tag {
+            padding: 8px 16px;
+            background-color: var(--accent);
+            color: var(--primary);
+            border-radius: 20px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .highlights {
+            flex: 1;
+            background-color: var(--accent);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .highlight-item {
+            margin-bottom: 20px;
+        }
+        
+        .highlight-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        
+        .highlight-item p {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        /* Projects Section */
+        .projects {
+            background-color: var(--accent);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-image {
+            height: 200px;
+            background-color: var(--secondary);
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .project-content {
+            padding: 25px;
+        }
+        
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .project-content p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .project-tag {
+            padding: 5px 10px;
+            background-color: var(--accent);
+            color: var(--primary);
+            border-radius: 15px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .project-links {
+            display: flex;
+        }
+        
+        .project-links a {
+            margin-right: 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: white;
+        }
+        
+        .contact-content {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            padding-right: 50px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            background-color: var(--accent);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .contact-item {
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary);
+            font-size: 1.2rem;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            float: left;
+            margin-right: 10px;
+        }
+        
+        .contact-item div {
+            overflow: hidden;
+        }
+        
+        .contact-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .contact-item p {
+            color: var(--gray);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-content p {
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 15px;
+            font-weight: 600;
+        }
+        
+        .footer-social {
+            margin-bottom: 20px;
+        }
+        
+        .footer-social a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* Responsive Styles */
+        @media screen and (max-width: 1024px) {
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+            
+            .about-content, .hero-content, .contact-content {
+                flex-direction: column;
+            }
+            
+            .about-text, .hero-text, .contact-form {
+                padding-right: 0;
+                margin-bottom: 50px;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .navbar {
+                padding: 15px 0;
+            }
+            
+            .nav-links {
+                position: absolute;
+                right: 0;
+                top: 70px;
+                background-color: white;
+                flex-direction: column;
+                width: 100%;
+                transform: translateX(100%);
+                transition: transform 0.5s ease-in;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+                padding: 15px 0;
+            }
+            
+            .burger {
+                display: block;
+            }
+            
+            .nav-active {
+                transform: translateX(0%);
+            }
+            
+            .hero {
+                margin-top: 70px;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">Nitin<span>Chauhan</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="assets/Updated CV.pdf" class="btn" id="download-resume" download>Resume</a></li>
+                </ul>
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Hi, I'm <span>Nitin Chauhan</span></h1>
+                    <p>DevOps & Backend Developer specializing in secure, scalable system deployment and automation.</p>
+                    <a href="#projects" class="btn">View My Work</a>
+                    <div class="social-icons">
+                        <a href="https://github.com/thatquietkid"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/nitin-chauhan910/"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://x.com/whytintinn"><i class="fab fa-twitter"></i></a>
+                        <a href="mailto:nitin.chauhan@iic.ac.in"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://avatars.githubusercontent.com/u/69313973?v=4" alt="Nitin Chauhan">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>DevOps & Backend Developer</h3>
+                    <p>I'm a DevOps-focused Backend Developer with hands-on experience in Linux systems, server management, application deployment, and automation. I hold a DevOps Specialization Certificate from IBM, and I'm actively working toward becoming a full-time DevOps Engineer.</p>
+                    <p>Currently, I'm a Research Intern at the Institute of Informatics and Communication (IIC), University of Delhi South Campus, where I manage and deploy secure, scalable systems for academic and government-backed platforms like the SamarthX Project (Ministry of Education, India).</p>
+                    <p>I've worked on configuring Linux servers, deploying web applications using Nginx and Apache, setting up Keycloak for authentication, and managing PostgreSQL and MariaDB databases. I also deploy and customize CMS platforms such as Docusaurus, Grav, CMSimple, and Joomla — often integrating them with backend services and managing domain/host configurations.</p>
+                    <p>In parallel, I'm skilled with containerization and orchestration tools like Docker, Kubernetes, and OpenShift, and I use CI/CD pipelines with GitHub Actions, Travis CI, and automated testing tools like OWASP ZAP and Snyk. I'm also comfortable with monitoring tools like Prometheus and Grafana, and have working knowledge of Chef and Puppet for configuration management.</p>
+                    <p>Whether it's spinning up a fresh server, deploying a secure CMS, or writing clean backend logic, I bring a full-stack mindset with a DevOps foundation — and I'm always looking to automate, optimize, and improve systems wherever possible.</p>
+                    
+                    <div class="skills">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">CI/CD</span>
+                        <span class="skill-tag">Terraform</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">DevOps</span>
+                        <span class="skill-tag">Agile</span>
+                        <span class="skill-tag">NGINX</span>
+                        <span class="skill-tag">Apache</span>
+                        <span class="skill-tag">Virtual Machines</span>
+                        <span class="skill-tag">Bash Scripting</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Golang</span>
+                    </div>
+                </div>
+                <div class="highlights">
+                    <div class="highlight-item">
+                        <h4>Education</h4>
+                        <p>M.Sc. Informatics, Institute of Informatics & Communication (2024-2026)</p>
+                        <p>B.Sc. Electronics and Computer Engineering, Rajdhani College (2021-2024)</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>Experience</h4>
+                        <p>Research Intern, Cyber Physical Systems - IIC (Mar 2025 - Present)</p>
+                        <p>Business Head, TravelMe Ventures (Aug 2023 - Feb 2024)</p>
+                        <p>Marketing & Operations Intern, TripGix (Jun 2023 - Aug 2023)</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>Leadership</h4>
+                        <p>Founder and President – Pragyan, Electronics Department Society (2023-24)</p>
+                        <p>Head of Content Writing – Quanta-22, Research and Innovation Society</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('/api/placeholder/400/200')"></div>
+                    <div class="project-content">
+                        <h3>DevOps Capstone Project</h3>
+                        <p>A comprehensive CI/CD pipeline with automated testing, containerization, and deployment workflows showcasing DevOps best practices.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Docker</span>
+                            <span class="project-tag">OpenShift</span>
+                            <span class="project-tag">Kubernetes</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">RESTful APIs</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/thatquietkid/devops-capstone-project/actions"><i class="fas fa-link"></i> View Project</a>
+                            <a href="https://github.com/thatquietkid/devops-capstone-project"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('/api/placeholder/400/200')"></div>
+                    <div class="project-content">
+                        <h3>AI Text Summarizer App</h3>
+                        <p>A full-stack application that leverages the Hugging Face API to provide intelligent text summarization capabilities.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Node.js</span>
+                            <span class="project-tag">Express.js</span>
+                            <span class="project-tag">Hugging Face API</span>
+                            <span class="project-tag">Postman</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://replit.com/@nitinch131/AI-Text-Summarizer-App"><i class="fas fa-link"></i> View Project</a>
+                            <a href="https://replit.com/@nitinch131/AI-Text-Summarizer-App"><i class="fab fa-github"></i> Replit</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('/api/placeholder/400/200')"></div>
+                    <div class="project-content">
+                        <h3>E-Commerce Store with Django</h3>
+                        <p>A full-stack e-commerce platform with user authentication, product management, and order tracking functionality.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Django</span>
+                            <span class="project-tag">Tailwind CSS</span>
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">HTMX</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#"><i class="fas fa-link"></i> View Project</a>
+                            <a href="https://github.com/thatquietkid/electronics-store-django"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('/api/placeholder/400/200')"></div>
+                    <div class="project-content">
+                        <h3>Chess Engine in Python</h3>
+                        <p>A graphical chess game with AI opponent using minimax algorithm with alpha-beta pruning for competitive gameplay.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Pygame</span>
+                            <span class="project-tag">AI</span>
+                            <span class="project-tag">Algorithms</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#"><i class="fas fa-link"></i> View Project</a>
+                            <a href="https://github.com/thatquietkid/chess-engine-python"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <h4>Current Position</h4>
+                            <p>Research Intern at IIC, University of Delhi South Campus</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>India</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-user-graduate"></i>
+                        <div>
+                            <h4>Education</h4>
+                            <p>University of Delhi South Campus</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Nitin Chauhan. All Rights Reserved.</p>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/thatquietkid"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/nitin-chauhan910/"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/whytintinn"><i class="fab fa-twitter"></i></a>
+                    <a href="mailto:nitin.chauhan@iic.ac.in"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation toggle
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.nav-links');
+        const navLinks = document.querySelectorAll('.nav-links li');
+        
+        burger.addEventListener('click', () => {
+            // Toggle Nav
+            nav.classList.toggle('nav-active');
+            
+            // Animate Links
+            navLinks.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
+            
+            // Burger Animation
+            burger.classList.toggle('toggle');
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (this.getAttribute('href') === '#') return;
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (nav.classList.contains('nav-active')) {
+                    nav.classList.remove('nav-active');
+                    burger.classList.remove('toggle');
+                    
+                    navLinks.forEach(link => {
+                        link.style.animation = '';
+                    });
+                }
+            });
+        });
+        
+        // Sticky header shadow 
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+    </script>
+</body>
+</html>
